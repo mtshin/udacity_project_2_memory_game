@@ -1,7 +1,10 @@
 /*
  * Create a list that holds all of your cards
  */
-
+const deck = document.querySelector('.deck');
+let card = document.getElementsByClassName('card');
+let cards = [...card];
+let matchedCards = [];
 
 /*
  * Display the cards on the page
@@ -12,7 +15,8 @@
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length,
+        temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -25,6 +29,18 @@ function shuffle(array) {
     return array;
 }
 
+// Create shuffled and 'hidden' card HTML with shuffle function
+function init() {
+    matchedCards = [];
+    cards = shuffle(cards);
+    // Redistribute shuffledCards to the game board
+    for (let c of cards) {
+        deck.appendChild(c);
+        c.classList.remove('open', 'match', 'show');
+    }
+}
+
+init();
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -36,3 +52,52 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+function showCard(event) {
+    let cardTarget = event.target;
+    if (cardTarget.matches('.card')) {
+        cardTarget.classList.add('open', 'show');
+    }
+
+}
+
+function checkMatch(event) {
+    let cardTarget = event.target;
+    if (event.target.matches('.card')) {
+        console.log('WE GOTTA CHECK DA MATCH');
+        matchedCards.push(cardTarget);
+        let matchedCardsCount = matchedCards.length;
+        console.log(matchedCards[0].lastElementChild.className);
+        if (matchedCardsCount === 2) {
+            console.log(matchedCards[0].lastElementChild.className + matchedCards[1].lastElementChild.className);
+            if (matchedCards[0].lastElementChild.className === matchedCards[1].lastElementChild.className) {
+                matchedCards[0].classList.add('match');
+                matchedCards[1].classList.add('match');
+                matchedCards = [];
+            }
+            else {
+                setTimeout(() => {
+                    matchedCards[0].classList.remove('open', 'show');
+                    matchedCards[1].classList.remove('open','show');
+                    matchedCards = [];
+                }, 500);
+            }
+            // TODO: move counter
+        }
+    }
+}
+
+deck.addEventListener('click', showCard, false);
+deck.addEventListener('click', checkMatch, false);
+
+//  document.addEventListener('click', function (event) {
+//      if (event.target.matches('.card')) {
+//          event.target.classList.add('open', 'show');
+//      }
+//  }, false);
+
+//  for (let c of cards) {
+//      console.log(c);
+//      // Show card when clicked
+//      c.addEventListener('click', function () { c.classList.add('open', 'show');});
+//  }
