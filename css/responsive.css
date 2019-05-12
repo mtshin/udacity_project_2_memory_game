@@ -1,0 +1,27 @@
+/**
+* Responsive styles for small and medium width screens.
+*/
+
+/* Small */
+@media screen and (max-width: 480px) {
+	.deck {
+		width: 88%;
+	}
+
+	.deck .card {
+		height: 95px;
+		width: 95px;
+	}
+}
+
+/* Medium */
+@media screen and (min-width: 481px) and (max-width: 680px) {
+	.deck {
+		width: 88%;
+	}
+
+	.deck .card {
+		height: 110px;
+		width: 110px;
+	}
+}

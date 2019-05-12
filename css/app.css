@@ -17,8 +17,9 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
+    background: #ffffff url('../img/geometry2.png');
+    /* Background pattern from Subtle Patterns */
+    font-family: 'Indie Flower', cursive;
 }
 
 .container {
@@ -29,7 +30,8 @@ body {
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Indie Flower', cursive;
+    font-size: 3em;
     font-weight: 300;
 }
 
@@ -46,7 +48,7 @@ h1 {
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 0 0 3em;
 }
@@ -54,6 +56,7 @@ h1 {
 .deck .card {
     height: 125px;
     width: 125px;
+    margin: 2px 2px 2px 2px;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -70,17 +73,32 @@ h1 {
     background: #02b3e4;
     cursor: default;
     pointer-events: none;
+    animation-name: cardOpen;
+    animation-duration: 0.2s;
 }
 
 .deck .card.show {
     font-size: 33px;
+    pointer-events: none;
 }
 
 .deck .card.match {
     cursor: default;
-    pointer-events: none;
     background: #02ccba;
     font-size: 33px;
+    animation-name: match;
+    animation-duration: 0.35s;
+}
+
+.deck .card.mismatch {
+    background: rgb(255, 0, 0);
+    animation-name: mismatch;
+    animation-duration: 0.35s;
+}
+
+/* selector to control card clickability */
+.disabled {
+    pointer-events: none;
 }
 
 /*
@@ -89,15 +107,13 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 345px;
     margin-bottom: 10px;
 }
 
 .score-panel .stars {
-    margin: 0;
     padding: 0;
     display: inline-block;
-    margin: 0 5px 0 0;
+    margin: 0 1em 0 0;
 }
 
 .score-panel .stars li {
@@ -105,7 +121,103 @@ h1 {
     display: inline-block;
 }
 
+.score-panel .moves {
+    font-size: 1.1em;
+}
+
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+.fa-star {
+    color: rgb(255, 145, 0)
+}
+
+/* Style for timer */
+.timer {
+    display: inline-block;
+    margin: 0 1em 0 1em;
+    font-size: 1.1em;
+}
+
+/* Style for results modal */
+.resultOverlay {
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: opacity 0.5s;
+    visibility: hidden;
+}
+
+.resultOverlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.resultModal {
+    background-color: #ffffff;
+    position: relative;
+    margin: 120px auto;
+    padding: 20px;
+    width: 75%;
+    border-radius: 10px;
+    transition: all ease-in-out 2s;
+}
+
+.resultMessage {
+    font-size: 2em;
+    text-align: center;
+    margin: 0.3em auto 0.3em auto;
+}
+
+.resultClose {
+    position: absolute;
+    background: none;
+    border: none;
+    padding: 0;
+    outline: none;
+    top: 15px;
+    right: 25px;
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.resultStats {
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.5em;
+    overflow: auto;
+    text-align: center;
+}
+
+.resultInit {
+    background-color: #02b3e4;
+    color: #ffffff;
+    padding: 0.5em 0.5em;
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.5em;
+    display: block;
+    margin: 1em auto;
+    width: 40%;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+}
+
+.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+#resultStarPanel li {
+    display: inline-block;
+    list-style: none;
 }

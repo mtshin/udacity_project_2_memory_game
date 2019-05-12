@@ -1,0 +1,50 @@
+/**
+* Animations for opening a card, match, and mismatch
+*/
+
+@keyframes cardOpen {
+    0% {
+        transform: rotate3d(0, 1, 0, 90deg);
+        animation-timing-function: ease-in;
+    }
+}
+
+@keyframes match {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    50% {
+        transform: scale(1.1, 1.1);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes mismatch {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+
+    20% {
+        transform: translate(1px, 1px) rotate(-3deg);
+    }
+
+    40% {
+        transform: translate(-3px, 0px) rotate(3deg);
+    }
+
+    60% {
+        transform: translate(3px, 0px) rotate(-3deg);
+    }
+
+    80% {
+        transform: translate(-1px, 1px) rotate(3deg);
+    }
+
+    100% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+}

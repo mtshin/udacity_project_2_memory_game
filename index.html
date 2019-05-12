@@ -1,13 +1,18 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Matching Game</title>
     <meta name="description" content="">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Indie+Flower">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
 </head>
+
 <body>
 
     <div class="container">
@@ -16,17 +21,19 @@
         </header>
 
         <section class="score-panel">
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        	</ul>
+            <ul class="stars">
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+            </ul>
 
-        	<span class="moves">3</span> Moves
+            <span class="moves">Moves: 0</span>
+
+            <span class="timer"></span>
 
             <div class="restart">
-        		<i class="fa fa-repeat"></i>
-        	</div>
+                <i class="fa fa-repeat"></i>
+            </div>
         </section>
 
         <ul class="deck">
@@ -79,8 +86,25 @@
                 <i class="fa fa-cube"></i>
             </li>
         </ul>
+
+        <div class="resultOverlay">
+            <div class="resultModal">
+                <h2 class="resultMessage">Congratulations, you win!</h2>
+                <button class="resultClose" onclick=closeResultModal()>x</button>
+                <div class="resultStats">
+                    <p>Total card flips: <span id=cardFlipCount></span></p>
+                    <p>Total moves: <span id=moveCount></span></p>
+                    <p>Time: <span id=timer></span></p>
+                    <p>Rating: <span id=resultStarPanel></span></p>
+                </div>
+                <button class="resultInit" onclick=resultInit()>Play Again</button>
+            </div>
+        </div>
     </div>
 
-    <script src="js/app.js"></script>
+    <script src="js/app.js">
+    </script>
+
 </body>
+
 </html>
