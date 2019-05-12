@@ -18,7 +18,6 @@ let stars = [...star];
 let timer = document.querySelector('.timer');
 let min, sec, time;
 let resultOverlay = document.querySelector('.resultOverlay');
-let resultClose = document.querySelector('.resultClose');
 
 
 
@@ -188,14 +187,6 @@ function resultModal() {
 
         resultOverlay.classList.add('show');
     }
-}
-
-/**
- * Close result modal on click
- */
-function closeResultModal() {
-    resultOverlay.classList.remove('show');
-    disableCards();
 }
 
 /**
