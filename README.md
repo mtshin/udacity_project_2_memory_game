@@ -30,7 +30,7 @@ Game metrics are shown above the game board:
 * Restart
     * Reset the game
 
-When all cards are matched, a congratulatory modal popup is shown displaying the aforementioned metrics in addition to a total card flip count. The player can then either close the modal to see the final game board and reset the game via the restart button icon at their leisure or click the Play Again button to close the modal and instantly reset the game board.
+When all cards are matched, a congratulatory modal popup is shown displaying the aforementioned metrics in addition to a total card flip count. The player can then click the Play Again button to close the modal and instantly reset the game board.
 
 ## Dependencies
 
